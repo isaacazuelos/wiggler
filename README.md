@@ -3,6 +3,8 @@
 Using an Arduino to take your cursor on a [random walk.](walk) Should work on
 anything that supports Arduino's `Mouse.h` library.
 
+Planning to come back to this once I can get my hands on one of [these.][neokey]
+
 I had originally tried to make this work on a [2% Milk][milk] board with some
 better controls. For reasons I couldn't figure out, the pro micro clone I had
 didn't work with `Mouse.h` for some reason. You can see this attempt's code in
@@ -12,7 +14,9 @@ I also tried to get this working on an STM32 [blackpill][] with other features
 too, but some poking around with a multimeter makes it look like my knockoff's
 user-programmable button is not connected correctly.
 
+
 [walk]: https://en.wikipedia.org/wiki/Random_walk
+[neokey]: https://www.adafruit.com/product/5020
 [milk]: https://github.com/Spaceman/SpaceboardsHardware/tree/master/Keyboards/2%25%20Milk
 [blackpill]: https://github.com/WeActTC/MiniSTM32F4x1
 
