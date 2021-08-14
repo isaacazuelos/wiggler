@@ -1,24 +1,36 @@
 # Wiggler
 
-Using an Arduino to take your cursor on a [random walk.](walk) Should work on
-anything that supports Arduino's `Mouse.h` library.
+Use a [Adafruit NeoKey Trinkey][neokey] to wiggle the mouse periodically _for
+reasons_.
 
-Planning to come back to this once I can get my hands on one of [these.][neokey]
+This has three modes, based on stoplight colours.
 
-I had originally tried to make this work on a [2% Milk][milk] board with some
-better controls. For reasons I couldn't figure out, the pro micro clone I had
-didn't work with `Mouse.h` for some reason. You can see this attempt's code in
-the `milk` directory.
+1. Red is off, where no mouse wiggling happens.
+2. Yellow wiggles the mouse every 1 to 4 minutes at random.
+3. Green wiggles the mouse constantly.
 
-I also tried to get this working on an STM32 [blackpill][] with other features
-too, but some poking around with a multimeter makes it look like my knockoff's
-user-programmable button is not connected correctly.
+You can see the current mode by touching the capacitive button, and cycle modes
+with the big button.
 
-
-[walk]: https://en.wikipedia.org/wiki/Random_walk
 [neokey]: https://www.adafruit.com/product/5020
-[milk]: https://github.com/Spaceman/SpaceboardsHardware/tree/master/Keyboards/2%25%20Milk
-[blackpill]: https://github.com/WeActTC/MiniSTM32F4x1
+
+## Installation
+
+You'll need to set up CircuitPython on the Trinkey. Get the [`.uf2` file][uf2].
+Double tap the reset button so it mounts as `TRINKEYBOOT` and drag the file onto
+that drive to install it. It should reboot as and mount with a new name. Copy
+the `code.py` file onto the drive and it should start running the code.
+
+You can see the output of the script, and access a REPL, by connecting to the
+serial console. [These instructions][serial] show you how to do that.
+
+[uf2]: https://circuitpython.org/board/adafruit_neokey_trinkey_m0/
+
+## Bugs
+
+There's an issue where the wiggling doesn't always seem to return the cursor
+back to _exactly_ where it started -- especially if it wiggles while your real
+mouse if also giving inputs or changes modes. I can't find the culprit.
 
 ## License
 
