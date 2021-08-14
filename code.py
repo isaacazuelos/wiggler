@@ -179,6 +179,16 @@ def wiggle(mouse):
     mouse.move(x=dx, y=dy)
 
 
+def schedule_future_wiggle():
+    """ Picks a new time in the future to wiggle, some time between 
+    (inclusive) `MIN_DELAY` and `MAX_DELAY` seconds from now.
+    """
+
+    global wiggle_time
+    delay = random.randint(MIN_DELAY, MAX_DELAY)
+    wiggle_time = time.monotonic() + delay
+
+
 def make_button():
     """ Make a `Button` to model the MX switch and set up our
     callbacks for lighting up the LED and cycling `current_colour`.
@@ -189,6 +199,7 @@ def make_button():
 
     button = Button(pin, "button")
     button.on_press = update_current_colour
+    button.on_release = schedule_future_wiggle
     button.on_held = set_led_to_current_colour
     return button
 
@@ -234,8 +245,7 @@ while True:
         wiggle(MOUSE)
     elif current_colour == YELLOW:
         if after(wiggle_time, wiggle, MOUSE):
-            # wiggle_time += random.randint(MIN_DELAY, MAX_DELAY)
-            wiggle_time += 1
+            schedule_future_wiggle()
         else:
             wait = wiggle_time - time.monotonic()
             print("next wiggle in {} seconds".format(wait))
