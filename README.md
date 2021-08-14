@@ -25,6 +25,7 @@ You can see the output of the script, and access a REPL, by connecting to the
 serial console. [These instructions][serial] show you how to do that.
 
 [uf2]: https://circuitpython.org/board/adafruit_neokey_trinkey_m0/
+[serial]: https://learn.adafruit.com/welcome-to-circuitpython/advanced-serial-console-on-mac-and-linux
 
 ## Bugs
 
